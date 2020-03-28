@@ -21,6 +21,8 @@
 # wynik komendy = 0 - TRUE, inne niż 0 - FALSE
 # $ chmod +x hello_world.sh
 
+# dobra stronka: https://devhints.io/bash
+
 
 for file in $1/*.old
 do
