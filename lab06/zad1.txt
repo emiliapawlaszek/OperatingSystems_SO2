@@ -1,0 +1,52 @@
+Wyrażenia regularne
+https://regex101.com/
+a) Imię i nazwisko - proszę uwzględnić: drugie imię, nazwisko z myślnikiem. Czyli wzorzec powinien wykryć zarówno: "Adam Nowak" i "Anna Maria Kowalska-Nowak". Niewymagane są polskie znaki.
+
+^(?:[A-Z][a-z]+ ){1,2}(?:[A-Z][a-z]+\-)*[A-Z][a-z]*$
+Anna Nowak
+Anna Maria Nowak
+Anna Kowalska-Nowak
+Anna Maria Kowalska-Nowak
+Anna
+anna
+anna nowak
+
+
+b) kod pocztowy i miasto: proszę uwzględnić polskie znaki oraz uwzględnić też takie miejscowości jak: "Zielona Góra" czy "Bielsko-Biała"
+
+^[0-9]{2}-[0-9]{3} (?:[A-Z][a-ząćęłńóśźżĄĘŁŃÓŚŹŻ]+[\- ])*[A-Z][a-ząćęłńóśźżĄĘŁŃÓŚŹŻ]+$
+65-012 Zielona Góra
+43-300 Bielsko-Biała
+54-207 Wrocław
+54-207 wrocław
+
+
+c) e-mail - proszę uwzględnić również wiele "sub-domen" np. "student.pwr.edu.pl".
+
+^(?:[a-z0-9]+[\.-])*[a-z0-9]+@(?:[a-z0-9]+[\.])+[a-z]+$
+241279@student.pwr.edu.pl
+annanowak@gmail.com
+anna.nowak@gmail.com
+anna.nowak.kowalska@gmail.com
+anna-nowak@gmail.com
+anna-nowak-kowalska@gmail.com
+annanowak@gmail@gmail.com
+----@gmail.com
+annagmail.com
+@gmail.com
+anna
+
+
+d) deklaracje funkcji w C np: "void fun(int, *int);".
+
+^[A-Za-z]+ [a-z0-9]+\((?:[a-z]+[,\ *&]+[a-z]+)*\);
+void fun(int,*int);
+int fun(int, *int);
+double fun(int, *int, &int);
+void fun();
+WlasnyTyp fun(int,*int);
+bool fun(int, &)int);
+bool fun(int, -int);
+bool (int, &int);
+bool fun(int, &int)
+fun(int, *int);
